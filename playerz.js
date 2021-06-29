@@ -152,7 +152,7 @@
     //check audio percentage and update time accordingly
     setInterval(() => {
       const progressBar1 = audioPlayer1.querySelector('.progress1');
-      progressBar1.style.width = (audio1.currentTime / audio.duration) * 100 + '%';
+      progressBar1.style.width = (audio1.currentTime / audio1.duration) * 100 + '%';
       audioPlayer1.querySelector('.time1 .current1').textContent =
         getTimeCodeFromNum(audio1.currentTime);
     }, 500);
@@ -162,10 +162,10 @@
     playBtn1.addEventListener(
       'click',
       () => {
-        if (audio.paused) {
+        if (audio1.paused) {
           playBtn1.classList.remove('play1');
           playBtn1.classList.add('pause1');
-          audio.play();
+          audio1.play();
         } else {
           playBtn1.classList.remove('pause1');
           playBtn1.classList.add('play1');
@@ -181,8 +181,8 @@
         volumeEl1.classList.remove('icono-volumeMedium1');
         volumeEl1.classList.add('icono-volumeMute1');
       } else {
-        volumeEl.classList.add('icono-volumeMedium1');
-        volumeEl.classList.remove('icono-volumeMute1');
+        volumeEl1.classList.add('icono-volumeMedium1');
+        volumeEl1.classList.remove('icono-volumeMute1');
       }
     });
     
