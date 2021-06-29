@@ -1,4 +1,18 @@
-    
+    //turn sekunde into minuti
+   function getTimeCodeFromNum(num) {
+        let seconds = parseInt(num);
+        let minutes = parseInt(seconds / 60);
+        seconds -= minutes * 60;
+        const hours = parseInt(minutes / 60);
+        minutes -= hours * 60;
+
+        if (hours === 0)
+          return `${minutes}:${String(seconds % 60).padStart(2, 0)}`;
+        return `${String(hours).padStart(2, 0)}:${minutes}:${String(
+          seconds % 60
+        ).padStart(2, 0)}`;
+      }
+
     const audioPlayer1 = document.querySelector('.audio-player1');
     const audio1 = new Audio(
       'https://meetarli-website-assets.s3.amazonaws.com/self_care_snippet.mp3'
@@ -74,20 +88,7 @@
         volumeEl.classList.remove('icono-volumeMute1');
       }
     });
-    //turn sekunde into minuti
-      function getTimeCodeFromNum(num) {
-        let seconds = parseInt(num);
-        let minutes = parseInt(seconds / 60);
-        seconds -= minutes * 60;
-        const hours = parseInt(minutes / 60);
-        minutes -= hours * 60;
-
-        if (hours === 0)
-          return `${minutes}:${String(seconds % 60).padStart(2, 0)}`;
-        return `${String(hours).padStart(2, 0)}:${minutes}:${String(
-          seconds % 60
-        ).padStart(2, 0)}`;
-      }
+    
     audio1.addEventListener('ended', () => {
       mixpanel.track('audio-finished');
     });
