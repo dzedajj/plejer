@@ -1,5 +1,5 @@
     //turn sekunde into minuti
-   function getTimeCodeFromNum(num) {
+    function getTimeCodeFromNum(num) {
         let seconds = parseInt(num);
         let minutes = parseInt(seconds / 60);
         seconds -= minutes * 60;
@@ -12,6 +12,21 @@
           seconds % 60
         ).padStart(2, 0)}`;
       }
+
+      function getTimeCodeFromNum1(num) {
+        let seconds = parseInt(num);
+        let minutes = parseInt(seconds / 60);
+        seconds -= minutes * 60;
+        const hours = parseInt(minutes / 60);
+        minutes -= hours * 60;
+
+        if (hours === 0)
+          return `${minutes}:${String(seconds % 60).padStart(2, 0)}`;
+        return `${String(hours).padStart(2, 0)}:${minutes}:${String(
+          seconds % 60
+        ).padStart(2, 0)}`;
+      }
+    
     
     
   const audioPlayer = document.querySelector('.audio-player');
@@ -114,7 +129,7 @@
       'loadeddata',
       () => {
         audioPlayer1.querySelector('.time1 .length1').textContent =
-          getTimeCodeFromNum(audio1.duration);
+          getTimeCodeFromNum1(audio1.duration);
         audio1.volume = 0.75;
       },
       false
@@ -150,7 +165,7 @@
       const progressBar1 = audioPlayer1.querySelector('.progress1');
       progressBar1.style.width = (audio1.currentTime / audio1.duration) * 100 + '%';
       audioPlayer1.querySelector('.time1 .current1').textContent =
-        getTimeCodeFromNum(audio1.currentTime);
+        getTimeCodeFromNum1(audio1.currentTime);
     }, 500);
   
     //toggle between playing and pausing on button click
