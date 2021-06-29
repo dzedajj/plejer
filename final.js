@@ -108,7 +108,7 @@
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     const audioPlayer1 = document.querySelector('.audio-player1');
     const audio1 = new Audio(
-      'https://meetarli-website-assets.s3.amazonaws.com/self_care_snippet.mp3'
+      'https://meetarli-website-assets.s3-ap-southeast-2.amazonaws.com/poplar-drive-18.mp3'
     );
     audio1.addEventListener(
       'loadeddata',
